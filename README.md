@@ -67,6 +67,3 @@
 1. 配置服务接口名；
 2. 将项目打成jar包，发布到您的Tars Http服务后即可。 
 
-
-
-version of tars. The other is SpringBoot.

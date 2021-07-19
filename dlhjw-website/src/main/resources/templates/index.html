@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zn" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+
+    <link rel="shortcut icon" th:href="@{/img/dlhjw_favicon_16.ico}">
+    <link th:href="@{/plugins/boostrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/plugins/boostrap/css/bootstrap-datetimepicker.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
+    <link th:href="@{/plugins/fileinput/css/fileinput.min.css}" rel="stylesheet"/>
+    <link th:href="@{/plugins/fileinput/css/theme.min.css}" rel="stylesheet"/>
+
+    <script th:src="@{/plugins/jquery/js/jquery-3.3.1.js}"></script>
+    <script th:src="@{/plugins/boostrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/plugins/moment/js/moment-with-locales.js}"></script>
+    <script th:src="@{/plugins/vue/js/vue.js}"></script>
+    <script th:src="@{/plugins/vue/js/vue-resource.min.js}"></script>
+    <script th:src="@{/plugins/layer/layer.js}"></script>
+    <script th:src="@{/plugins/fileinput/js/fileinput.min.js}"></script>
+    <script th:src="@{/plugins/fileinput/js/fileinput_locale_zh.js}"></script>
+    <script th:src="@{/plugins/fileinput/js/theme.min.js}"></script>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,
+		                                     initial-scale=1.0,
+		                                     maximum-scale=1.0,
+		                                     user-scalable=no">
+
+    <title>生成页</title>
+</head>
+<body>
+
+
+<div id="main" class="container">
+    <div class="row">
+        <div id="window" class="col-xs-12 col-md-6 col-md-offset-3">
+            <div class="tab-content">
+
+                <!-- 0.欢迎页 -->
+                <div id="d0" class="tab-pane fade in active">
+                    <div class="panel panel-default panel_content">
+                        <div class="panel-heading text-center">
+                            <h3 class="panel-title">
+                                <b>欢迎访问</b>
+                            </h3>
+                        </div>
+                        <div class="panel-body-d0">
+                            <div class="center">
+                                <div class="name">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center font-color">你好！这里是多氯环己烷的练手项目——个人主页生成器！</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="text-center font-color">将会有七个步骤， 完成七个步骤即可生成自己的个人主页啦；</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center font-color">除了姓名外都不是必填的哦；</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center font-color">点击下方的按钮开始生成个人主页吧！</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <div class="submit">
+                                    <div class="center_content">
+                                        <a class="btn btn-info btn-block" href="#d1" data-toggle="tab">开始！冲冲冲！</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1.基础信息 -->
+                <div id="d1" class="tab-pane fade">
+                    <div class="panel panel-default panel_content">
+                        <div class="panel-heading text-center">
+                            <h3 class="panel-title ">
+                                <b>第一步：填写您的基础信息（1/7）</b>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="center">
+                                <div class="name">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">您的姓名：</span>
+                                        <input type="text" class="form-control" v-model="user.name" placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="date">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">出生日期：</span>
+                                        <input type='date' class="form-control" v-model="user.birth"/>
+                                    </div>
+                                </div>
+                                <div class="political">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">政治面貌：</span>
+                                        <input type="text" class="form-control" v-model="user.political"
+                                               placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="city">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">地区城市：</span>
+                                        <input type="text" class="form-control" v-model="user.city" placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="address div-margin">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">详细地址：</span>
+                                        <input type="text" class="form-control" v-model="user.address"
+                                               placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="double div-margin">
+                                    <p class="cneter_title text-center">您的性别：</p>
+                                    <div class="center_content btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary" @click="nv">
+                                            <input type="radio" name="options" value="0" v-model="user.sex" id="sex0">
+                                            女生
+                                        </label>
+                                        <label class="btn btn-primary" @click="nan">
+                                            <input type="radio" name="options" value="1" v-model="user.sex" id="sex1">
+                                            男生
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="double div-margin">
+                                    <p class="cneter_title text-center">是否开启留言功能：</p>
+                                    <p class="cneter_title text-center text-muted">开启留言功能后，其他访问者可以在您的主页留言</p>
+                                    <div class="center_content btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary" @click="mssOpen">
+                                            <input type="radio" name="options" value="1" v-model="user.isMessage"
+                                                   id="isMessage1"> 开启
+                                        </label>
+                                        <label class="btn btn-primary" @click="mssClose">
+                                            <input type="radio" name="options" value="0" v-model="user.isMessage"
+                                                   id="isMessage0"> 关闭
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <p class="cneter_title text-center">个人简介：</p>
+                                    <p class="cneter_title text-center text-muted">右下角可调整输入框显示范围（仅限PC端）</p>
+                                    <div class="center_content">
+                                        <textarea class="form-control" v-model="user.info"></textarea>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="submit">
+                                    <div class="center_content">
+                                        <a class="btn btn-info btn-block" @click="userClick" v-bind:href="urlD2"
+                                           data-toggle="tab">下一步（联系方式）</a>
+                                        <a class="btn btn-info btn-block" @click="userEndClick" v-bind:href="urlD8"
+                                           data-toggle="tab">跳转至尾页</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2.联系方式 -->
+                <div id="d2" class="tab-pane fade">
+                    <div class="panel panel-default panel_content">
+                        <div class="panel-heading text-center">
+                            <h3 class="panel-title">
+                                <b>第二步：填写您的联系方式与头像（2/7）</b>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="center">
+                                <div class="email">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</span>
+                                        <input type="email" class="form-control" v-model="contact.email"
+                                               placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="phone">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">手&nbsp;&nbsp;&nbsp;&nbsp;机：</span>
+                                        <input type="number" class="form-control" v-model="contact.phone"
+                                               placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="wechat">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">微&nbsp;&nbsp;&nbsp;&nbsp;信：</span>
+                                        <input type="text" class="form-control" v-model="contact.wechat"
+                                               placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="wechatOfficial">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">公众号：</span>
+                                        <input type="text" class="form-control" v-model="contact.wechatOfficial"
+                                               placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="qq">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Ｑ&nbsp;&nbsp;&nbsp;&nbsp;Ｑ：</span>
+                                        <input type="text" class="form-control" v-model="contact.qq" placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="weibo">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">微&nbsp;&nbsp;&nbsp;&nbsp;博：</span>
+                                        <input type="text" class="form-control" v-model="contact.weibo"
+                                               placeholder="请输入URL地址，而不是昵称">
+                                    </div>
+                                </div>
+                                <div class="github">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">&nbsp;github：</span>
+                                        <input type="text" class="form-control" v-model="contact.github"
+                                               placeholder="请输入URL地址，而不是昵称">
+                                    </div>
+                                </div>
+                                <div class="blog div-margin">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">博&nbsp;&nbsp;&nbsp;&nbsp;客：</span>
+                                        <input type="text" class="form-control" v-model="contact.blog"
+                                               placeholder="请输入URL地址，而不是昵称">
+                                    </div>
+                                </div>
+                                <div class="mask">
+                                    <p class="cneter_title text-center">上传头像：</p>
+                                    <input id="input-b1" name="input-b1" type="file" class="file"
+                                           data-browse-on-zone-click="true">
+                                </div>
+                                <br/>
+                                <p class="text-info text-center">提示：选定图片后点击“上传”按钮才能进行下一步，否则将会上传失败</p>
+                                <p class="text-warning text-center">提示：选定图片后点击“上传”按钮才能进行下一步，否则将会上传失败</p>
+                                <p class="text-danger text-center">提示：选定图片后点击“上传”按钮才能进行下一步，否则将会上传失败</p>
+                                <br/>
+                                <div class="submit">
+                                    <div class="center_content">
+                                        <a class="btn btn-info btn-block" href="#d1" data-toggle="tab">上一步（基础信息）</a>
+                                        <a class="btn btn-info btn-block" href="#d3" @click="contactClick"
+                                           data-toggle="tab">下一步（教育经历）</a>
+                                        <a class="btn btn-info btn-block" href="#d8" @click="endClick"
+                                           data-toggle="tab">跳转至尾页</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3.教育经历 -->
+                <div id="d3" class="tab-pane fade">
+                    <div class="panel panel-default panel_content">
+                        <div class="panel-heading text-center">
+                            <h3 class="panel-title">
+                                <b>第三步：填写您的教育经历（3/7）</b>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="center">
+                                <div class="name">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">学校名称：</span>
+                                        <input type="text" class="form-control" v-model="edu.school" placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="age div-margin">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">所学专业：</span>
+                                        <input type="text" class="form-control" v-model="edu.study" placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="date div-margin">
+                                    <p class="cneter_title  text-center">入学日期：</p>
+                                    <input type='date' class="form-control" v-model="edu.start"/>
+                                </div>
+                                <div class="date div-margin">
+                                    <p class="cneter_title  text-center">毕业日期：</p>
+                                    <input type='date' class="form-control" v-model="edu.end"/>
+
+                                </div>
+                                <div class="info">
+                                    <p class="cneter_title  text-center">教育经历介绍：</p>
+                                    <p class="cneter_title text-center text-muted">右下角可调整输入框显示范围（仅限PC端）</p>
+                                    <div class="center_content">
+                                        <textarea class="form-control" v-model="edu.description"></textarea>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="submit">
+                                    <div class="center_content">
+                                        <a class="btn btn-info btn-block" @click="saveEdu" href="javascript:void(0)"
+                                           data-toggle="tab">继续增加教育经历</a>
+                                        <a class="btn btn-info btn-block" href="#d2" data-toggle="tab">上一步（联系方式）</a>
+                                        <a class="btn btn-info btn-block" href="#d4" @click="eduClick"
+                                           data-toggle="tab">下一步（工作经历）</a>
+                                        <a class="btn btn-info btn-block" href="#d8" @click="endClick"
+                                           data-toggle="tab">跳转至尾页</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4.工作经历 -->
+                <div id="d4" class="tab-pane fade">
+                    <div class="panel panel-default panel_content">
+                        <div class="panel-heading text-center">
+                            <h3 class="panel-title">
+                                <b>第四步：填写您的工作/项目经历（4/7）</b>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="center">
+                                <div class="double div-margin">
+                                    <p class="cneter_title  text-center">是否为校内工作/项目：</p>
+                                    <div class="center_content btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary"   @click="schNo">
+                                            <input type="radio" name="options" value="0" v-model="work.isSchool"
+                                                   id="isSchool0"> 否
+                                        </label>
+                                        <label class="btn btn-primary" @click="schYes">
+                                            <input type="radio" name="options" value="1" v-model="work.isSchool"
+                                                   id="isSchool1"> 是
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="name">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">{{companyMess}}：</span>
+                                        <input type="text" class="form-control" v-model="work.company"
+                                               placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="age div-margin">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">职位名称：</span>
+                                        <input type="text" class="form-control" v-model="work.job" placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="date div-margin">
+                                    <p class="cneter_title  text-center">开始日期：</p>
+                                    <input type='date' class="form-control" v-model="work.start"/>
+                                </div>
+                                <div class="date div-margin">
+                                    <p class="cneter_title  text-center">结束日期：</p>
+                                    <input type='date' class="form-control" v-model="work.end"/>
+                                </div>
+                                <div class="info">
+                                    <p class="cneter_title  text-center">工作经历介绍：</p>
+                                    <p class="cneter_title text-center text-muted">右下角可调整输入框显示范围（仅限PC端）</p>
+                                    <div class="center_content">
+                                        <textarea class="form-control" v-model="work.description"></textarea>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="submit">
+                                    <div class="center_content">
+                                        <a class="btn btn-info btn-block" @click="saveWork" href="javascript:void(0)"
+                                           data-toggle="tab">继续增加工作经历</a>
+                                        <a class="btn btn-info btn-block" @click="backEdu" href="#d3" data-toggle="tab">上一步（教育经历）</a>
+                                        <a class="btn btn-info btn-block" href="#d5" @click="workClick"
+                                           data-toggle="tab">下一步（关键词）</a>
+                                        <a class="btn btn-info btn-block" href="#d8" @click="endClick"
+                                           data-toggle="tab">跳转至尾页</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5.关键词 -->
+                <div id="d5" class="tab-pane fade">
+                    <div class="panel panel-default panel_content">
+                        <div class="panel-heading text-center">
+                            <h3 class="panel-title">
+                                <b>第五步：给自己添加一些关键词吧（5/7）</b>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="center">
+                                <div class="info">
+                                    <p class="cneter_title  text-center"><strong>性格/个性</strong>关键词：</p>
+                                    <p class="cneter_title text-center text-muted">请用关键词形容您的性格/个性吧，多个词语通过空格隔开</p>
+                                    <div class="center_content">
+                                        <textarea class="form-control" v-model="keywords.disposition"
+                                                  placeholder="示例: 逗比 乐观 幽默 务实 多愁善感"></textarea>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="info">
+                                    <p class="cneter_title  text-center"><strong>技能/爱好</strong>关键词：</p>
+                                    <p class="cneter_title text-center text-muted">请用关键词形容您的技能/爱好吧，多个词语通过空格隔开</p>
+                                    <div class="center_content">
+                                        <textarea class="form-control" v-model="keywords.ability"
+                                                  placeholder="示例: 唱 跳 Rap 主持 修仙 Java Office办公应用"></textarea>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="submit">
+                                    <div class="center_content">
+                                        <a class="btn btn-info btn-block" href="#d4" @click="backWork"
+                                           data-toggle="tab">上一步（工作经历）</a>
+                                        <a class="btn btn-info btn-block" href="#d6" @click="keywordsClick"
+                                           data-toggle="tab">下一步（特长）</a>
+                                        <a class="btn btn-info btn-block" href="#d8" @click="endClick"
+                                           data-toggle="tab">跳转至尾页</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6.特长 -->
+                <div id="d6" class="tab-pane fade">
+                    <div class="panel panel-default panel_content">
+                        <div class="panel-heading text-center">
+                            <h3 class="panel-title">
+                                <b>第六步：请描述您的两个特长领域（6/7）</b>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="center">
+                                <div class="name">
+                                    <span class="cneter_title">概括一下您的特长一（名称）：</span>
+                                    <div class="center_content">
+                                        <input type="text" class="form-control" v-model="specialty1.name"
+                                               placeholder="示例：贼喜欢唱跳RAP">
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <span class="cneter_title">描述一下您的特长一吧（描述信息）：</span>
+                                    <div class="center_content">
+                                        <textarea class="form-control" v-model="specialty1.description"
+                                                  placeholder="示例：曾经唱跳RAP了三天三夜四天四夜五天五夜六天三六夜……"></textarea>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="name">
+                                    <span class="cneter_title">概括一下您的特长二（名称）：</span>
+                                    <div class="center_content">
+                                        <input type="text" class="form-control" v-model="specialty2.name"
+                                               placeholder="示例：喜欢与同学打成一片">
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <span class="cneter_title">描述一下您的特长二吧（描述信息）：</span>
+                                    <div class="center_content">
+                                        <textarea class="form-control" v-model="specialty2.description"></textarea>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="submit">
+                                    <div class="center_content">
+                                        <a class="btn btn-info btn-block" href="#d5" data-toggle="tab">上一步（技能能力）</a>
+                                        <a class="btn btn-info btn-block" href="#d7" @click="specialtyClick"
+                                           data-toggle="tab">下一步（荣誉证明）</a>
+                                        <a class="btn btn-info btn-block" href="#d8" @click="endClick"
+                                           data-toggle="tab">跳转至尾页</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7.荣誉 -->
+                <div id="d7" class="tab-pane fade">
+                    <div class="panel panel-default panel_content">
+                        <div class="panel-heading text-center">
+                            <h3 class="panel-title">
+                                <b>第七步：请描述您获得的荣誉证书与职业资格证书（7/7）</b>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="center">
+                                <div class="name div-margin">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">证书名称：</span>
+                                        <input type="text" class="form-control" v-model="honour.name" placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="category div-margin">
+                                    <p class="cneter_title  text-center">证书类型：</p>
+                                    <div class="center_content btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary" @click="category0">
+                                            <input type="radio" name="options" value="0" v-model="honour.category"
+                                                   id="category0"> 荣誉类
+                                        </label>
+                                        <label class="btn btn-primary" @click="category1">
+                                            <input type="radio" name="options" value="1" v-model="honour.category"
+                                                   id="category1"> 职业资格类
+                                        </label>
+                                        <label class="btn btn-primary" @click="category2">
+                                            <input type="radio" name="options" value="2" v-model="honour.category"
+                                                   id="category2"> 专业技术类
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="info div-margin">
+                                    <p class="cneter_title  text-center">证书描述：</p>
+                                    <div class="center_content">
+                                        <textarea class="form-control" v-model="honour.description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="double div-margin">
+                                    <p class="cneter_title  text-center">是否上传相关证明文件：</p>
+                                    <div class="center_content btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary" @click="fileNo">
+                                            <input type="radio" name="options" value="0" v-model="honour.haveFile"
+                                                   id="haveFile0" checked> 否
+                                        </label>
+                                        <label class="btn btn-primary" @click="fileYes">
+                                            <input type="radio" name="options" value="1" v-model="honour.haveFile"
+                                                   id="haveFile1"> 是
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="info" v-show="honour.haveFile===1">
+                                    <p class="cneter_title text-center">请上传相关证明文件：</p>
+                                    <input id="input-b2" name="input-b2" type="file" class="file"
+                                           data-browse-on-zone-click="true">
+                                    <br/>
+                                    <p class="text-info text-center">提示：选定文件后点击“上传”按钮才能进行下一步，否则将会上传失败</p>
+                                    <p class="text-warning text-center">提示：选定文件后点击“上传”按钮才能进行下一步，否则将会上传失败</p>
+                                    <p class="text-danger text-center">提示：选定文件后点击“上传”按钮才能进行下一步，否则将会上传失败</p>
+                                </div>
+                                <br/>
+                                <div class="submit">
+                                    <div class="center_content">
+                                        <a class="btn btn-info btn-block" @click="saveHonour" href="javascript:void(0)"
+                                           data-toggle="tab">继续增加证书</a>
+                                        <a class="btn btn-info btn-block" href="#d6" data-toggle="tab">上一步（特长）</a>
+                                        <a class="btn btn-info btn-block" href="#d8" @click="honourClick"
+                                           data-toggle="tab">下一步（尾页）</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8.跳转 -->
+                <div id="d8" class="tab-pane fade">
+                    <div class="panel panel-default panel_content">
+                        <div class="panel-heading text-center">
+                            <h3 class="panel-title">
+                                <b>请确认您的信息</b>
+                            </h3>
+                        </div>
+                        <div class="panel-body-d8">
+                            <div class="center">
+                                <div class="info div-margin">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">请选择您要跳转的页码，进行信息确认</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="text-center">信息一经提交不能修改！</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">其实是可以修改的，可以联系作者修改数据库</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">确认无误后，请点击最下方按钮生成个人主页吧</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="submit">
+                                    <a class="btn btn-info btn-block" href="#d1" data-toggle="tab">第一页：基础信息</a>
+                                    <a class="btn btn-info btn-block" href="#d2" data-toggle="tab">第二页：联系方式</a>
+                                    <a class="btn btn-info btn-block" href="#d3" @click="backEdu" data-toggle="tab">第三页：教育经历</a>
+                                    <a class="btn btn-info btn-block" href="#d4" @click="backWork" data-toggle="tab">第四页：工作经历</a>
+                                    <a class="btn btn-info btn-block" href="#d5" data-toggle="tab">第五页：关键词语</a>
+                                    <a class="btn btn-info btn-block" href="#d6" data-toggle="tab">第六页：特长领域</a>
+                                    <a class="btn btn-info btn-block" href="#d7" @click="backHonour" data-toggle="tab">第七页：荣誉证书</a>
+                                    <br/>
+                                    <p class="cneter_title text-center">
+                                        确认好了后点击下方按钮一键生成吧！
+                                    </p>
+                                    <a class="btn btn-info btn-block" href="#d9" @click="submitClick" data-toggle="tab">开始生成个人主页</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9.生成 -->
+                <div id="d9" class="tab-pane fade">
+
+                    <div class="panel panel-default panel_content">
+                        <div class="panel-heading text-center">
+                            <h3 class="panel-title text-center">
+                                <b>{{title}}</b>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="center text-center">
+                                <h1>{{title}}</h1>
+                                <h3 v-html="result"></h3>
+                                <br>
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">首次访问可能需要时间加载CSS样式，请稍等</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                <div class="submit">
+                                    <div class="center_content">
+                                        <a class="btn btn-info btn-block" href="/index">再生成一个</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+</body>
+<script th:src="@{/js/index.js}"></script>
+<script th:src="@{/js/base-file.js}"></script>
+
+</html>

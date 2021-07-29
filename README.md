@@ -67,3 +67,7 @@
 1. 配置服务接口名；
 2. 将项目打成jar包，发布到您的Tars Http服务后即可。 
 
+
+## 3. 以上链接可以通过扫描下方二维码矩阵访问：
+
+![多氯环己烷的二维码矩阵](https://img-blog.csdnimg.cn/b351545ad8644de080e82e7be9dd2d41.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RsaGp3MTQxMg==,size_16,color_FFFFFF,t_70#pic_center)

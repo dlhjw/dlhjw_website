@@ -30,7 +30,7 @@
 - **第一阶段**： [https://mp.weixin.qq.com/s/bSbkjRGRQjUG3lgjRDMrkg](https://mp.weixin.qq.com/s/bSbkjRGRQjUG3lgjRDMrkg) 
 - **第二阶段**： [https://mp.weixin.qq.com/s/R95voHz8QS6GVeaQo0gxzg](https://mp.weixin.qq.com/s/R95voHz8QS6GVeaQo0gxzg) 
 - **业务设计**： [https://mp.weixin.qq.com/s/PYZUrw4SmUVE0RTwaQKzJw](https://mp.weixin.qq.com/s/PYZUrw4SmUVE0RTwaQKzJw) 
-- **致用户（使用说明）**：
+- **致用户（使用说明）**：[https://mp.weixin.qq.com/s/N_Mw8dciQGOeMETlQrtzWQ](https://mp.weixin.qq.com/s/N_Mw8dciQGOeMETlQrtzWQ) 
 
 
 
